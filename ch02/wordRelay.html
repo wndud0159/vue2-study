@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <!-- 개발버전, 도움되는 콘솔 경고를 포함. -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <!-- <div>{{word}}</div>
+            <form action="" v-on:submit="onResultHandler">
+                <input ref="answer" v-model="value" type="text" name="" id="" />
+                <button type="submit">&nbsp;입력</button>
+            </form>
+            <div>{{result}}</div> -->
+
+            <word-relay start-word="최주영"></word-relay>
+            <word-relay start-word="최주빵"></word-relay>
+            <word-relay start-word="최주순"></word-relay>
+        </div>
+        <script>
+            Vue.component("word-relay", {
+                template: `
+                <div>
+                    <div>{{word}}</div>
+                    <form action="" v-on:submit="onResultHandler">
+                        <input ref="answer" v-model="value" type="text" name="" id="" />
+                        <button type="submit">&nbsp;입력</button>
+                    </form>
+                    <div>{{result}}</div>
+                </div>
+                `,
+                props: ["startWord"],
+                data() {
+                    return {
+                        word: this.startWord,
+                        result: "",
+                        value: "",
+                    }
+                },
+                methods: {
+                    onResultHandler(e) {
+                        e.preventDefault()
+                        if (this.word[this.word.length - 1] === this.value[0]) {
+                            this.result = "정답"
+                            this.word = this.value
+                            this.value = ""
+                            this.$refs.answer.focus()
+                        } else {
+                            this.result = "땡"
+                            this.$refs.answer.focus()
+                        }
+                    },
+                },
+            })
+        </script>
+        <script>
+            const app = new Vue({
+                el: "#root",
+                // conponents: {},
+                // data: {
+                //     word: "최주영",
+                //     result: "",
+                //     value: "",
+                // },
+                // methods: {
+                //     onResultHandler(e) {
+                //         e.preventDefault()
+                //         if (this.word[this.word.length - 1] === this.value[0]) {
+                //             this.result = "정답"
+                //             this.word = this.value
+                //             this.value = ""
+                //             this.$refs.answer.focus()
+                //         } else {
+                //             this.result = "땡"
+                //             this.$refs.answer.focus()
+                //         }
+                //     },
+                // },
+            })
+        </script>
+    </body>
+</html>

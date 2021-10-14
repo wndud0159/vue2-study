@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <!-- 개발버전, 도움되는 콘솔 경고를 포함. -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <div>{{first}} 곱하기 {{second}} 는?</div>
+            <form action="" v-on:submit="onResultHandler">
+                <input ref="answer" v-model="value" type="text" />
+                <button style="margin-bottom: 10px; margin-top: 10px" type="submit">입력</button>
+                <div id="result">{{result}}</div>
+            </form>
+        </div>
+        <script>
+            const app = new Vue({
+                el: "#root",
+                data: {
+                    first: Math.ceil(Math.random() * 9),
+                    second: Math.ceil(Math.random() * 9),
+                    value: "",
+                    result: "",
+                },
+                methods: {
+                    onResultHandler(element) {
+                        element.preventDefault() // 서브밋 보냈을 때 새로고침 방지
+                        if (this.first * this.second === parseInt(this.value)) {
+                            this.result = "정답"
+                            this.first = Math.ceil(Math.random() * 9)
+                            this.second = Math.ceil(Math.random() * 9)
+                            this.value = ""
+                            this.$refs.answer.focus()
+                        } else {
+                            this.result = "땡"
+                            this.value = ""
+                            this.$refs.answer.focus()
+                        }
+                    },
+                },
+            })
+        </script>
+    </body>
+</html>
