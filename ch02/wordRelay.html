@@ -39,23 +39,23 @@
                         word: this.startWord,
                         result: "",
                         value: "",
-                    }
+                    };
                 },
                 methods: {
                     onResultHandler(e) {
-                        e.preventDefault()
+                        e.preventDefault();
                         if (this.word[this.word.length - 1] === this.value[0]) {
-                            this.result = "정답"
-                            this.word = this.value
-                            this.value = ""
-                            this.$refs.answer.focus()
+                            this.result = "정답";
+                            this.word = this.value;
+                            this.value = "";
+                            this.$refs.answer.focus();
                         } else {
-                            this.result = "땡"
-                            this.$refs.answer.focus()
+                            this.result = "땡";
+                            this.$refs.answer.focus();
                         }
                     },
                 },
-            })
+            });
         </script>
         <script>
             const app = new Vue({
@@ -80,7 +80,7 @@
                 //         }
                 //     },
                 // },
-            })
+            });
         </script>
     </body>
 </html>

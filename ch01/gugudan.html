@@ -28,21 +28,21 @@
                 },
                 methods: {
                     onResultHandler(element) {
-                        element.preventDefault() // 서브밋 보냈을 때 새로고침 방지
+                        element.preventDefault(); // 서브밋 보냈을 때 새로고침 방지
                         if (this.first * this.second === parseInt(this.value)) {
-                            this.result = "정답"
-                            this.first = Math.ceil(Math.random() * 9)
-                            this.second = Math.ceil(Math.random() * 9)
-                            this.value = ""
-                            this.$refs.answer.focus()
+                            this.result = "정답";
+                            this.first = Math.ceil(Math.random() * 9);
+                            this.second = Math.ceil(Math.random() * 9);
+                            this.value = "";
+                            this.$refs.answer.focus();
                         } else {
-                            this.result = "땡"
-                            this.value = ""
-                            this.$refs.answer.focus()
+                            this.result = "땡";
+                            this.value = "";
+                            this.$refs.answer.focus();
                         }
                     },
                 },
-            })
+            });
         </script>
     </body>
 </html>
